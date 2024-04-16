@@ -11,6 +11,12 @@
             android:id="@+id/nav_profile"
             android:title="Perfil" />
         <item
+            android:id="@+id/nav_photos"
+            android:title="Fotos" />
+        <item
+            android:id="@+id/nav_videos"
+            android:title="Videos" />
+        <item
             android:id="@+id/nav_web"
             android:title="Web" />
     </group>

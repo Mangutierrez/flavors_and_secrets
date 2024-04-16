@@ -1,39 +1,39 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:gravity="center"
+    android:orientation="vertical"
     android:padding="16dp">
 
     <ImageView
         android:id="@+id/imageViewWelcome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/welcome_image" />
+        android:layout_width="200dp"
+        android:layout_height="300dp"
+        android:src="@android:color/darker_gray" />
 
     <TextView
         android:id="@+id/textViewWelcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:text="¡BIENVENIDO!"
         android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_marginTop="24dp" />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textViewWelcomeSubtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="Descubre las mejores recetas en un solo lugar."
-        android:textSize="16sp"
-        android:layout_marginTop="8dp" />
+        android:textSize="16sp" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonStart"
         android:layout_width="200dp"
         android:layout_height="45dp"
-        android:text="INICIAR"
         android:layout_marginTop="32dp"
+        android:text="INICIAR"
 
         android:textColor="@android:color/darker_gray" />
 </LinearLayout>
