@@ -8,6 +8,7 @@ import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.mogu.flavorsandsecrets.R
 import com.mogu.flavorsandsecrets.databinding.FragmentPhotoBinding
 
@@ -68,7 +69,10 @@ class PhotosAdapter : RecyclerView.Adapter<PhotosAdapter.PhotoViewHolder>() {
     override fun onBindViewHolder(holder: PhotoViewHolder, position: Int) {
         val photoUrl = photoUrls[position]
         // Cargar imagen
-
+        Glide.with(holder.itemView.context)
+            .load(photoUrl)
+            .centerCrop()
+            .into(holder.imgPhoto)
     }
 
     override fun getItemCount() = photoUrls.size

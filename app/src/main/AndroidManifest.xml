@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -15,7 +17,7 @@
 
         <activity android:name=".ui.welcome.WelcomeActivity"
             android:exported="true"
-            android:theme="@style/Theme.Material3.Light.NoActionBar">
+            android:theme="@style/Theme.FlavorsAndSecrets.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -25,15 +27,15 @@
 
         <activity
             android:name=".MainActivity"
-            android:theme="@style/Theme.Material3.Light.NoActionBar"/>
+            android:theme="@style/Theme.FlavorsAndSecrets"/>
 
         <activity
             android:name=".ui.detail.RecipeDetailActivity"
-            android:theme="@style/Theme.Material3.Light.NoActionBar"/>
+            android:theme="@style/Theme.FlavorsAndSecrets"/>
 
         <activity
             android:name=".ui.web.WebSearchActivity"
-            android:theme="@style/Theme.Material3.Light.NoActionBar"/>
+            android:theme="@style/Theme.FlavorsAndSecrets.NoActionBar"/>
     </application>
 
 </manifest>

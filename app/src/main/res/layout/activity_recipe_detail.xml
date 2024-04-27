@@ -1,80 +1,108 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="0dp">
 
-        <ImageView
-            android:id="@+id/imgBackArrow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:src="@drawable/ic_back" />
-
-        <ImageView
-            android:id="@+id/imgRecipe"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="230dp"
-            android:layout_marginTop="16dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/receipe_image" />
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/txtRecipeTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Cherry Healthy"
-            android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+            <ImageView
+                android:id="@+id/imgRecipe"
+                android:layout_width="match_parent"
+                android:layout_height="230dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/receipe_image"
+                tools:ignore="MissingConstraints" />
 
-        <TextView
-            android:id="@+id/txtRecipeDescription"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Descripción receta." />
+            <ImageView
+                android:id="@+id/imgBackArrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_margin="16dp"
+                android:padding="8dp"
+                android:src="@drawable/ic_back"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
 
-        <TextView
-            android:id="@+id/txtIngredientsTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Ingredientes:"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title" />
-
-        <TextView
-            android:id="@+id/txtIngredients"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Seledri, Telur, Blueberry, Madu." />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btnShare"
-                android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:padding="16dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/txtRecipeTitle"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_weight="1"
-                android:text="COMPARTIR" />
+                android:layout_marginTop="16dp"
+                android:text="Cherry Healthy"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
-            <Button
-                android:id="@+id/btnAddToFavorites"
-                android:layout_width="0dp"
+            <TextView
+                android:id="@+id/txtRecipeDescription"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="@color/design_default_color_primary"
-                android:text="AÑADIR A FAVORITOS"
-                android:textColor="@android:color/white" />
+                android:layout_marginTop="8dp"
+                android:text="Descripción receta." />
+
+            <TextView
+                android:id="@+id/txtIngredientsTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Duración:"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+            <TextView
+                android:id="@+id/txtIngredients"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Seledri, Telur, Blueberry, Madu." />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnShare"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    app:cornerRadius="8dp"
+                    android:text="COMPARTIR" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnAddToFavorites"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:cornerRadius="8dp"
+                    android:text="AÑADIR A FAVORITOS"
+                    android:textColor="@android:color/white" />
+            </LinearLayout>
+
         </LinearLayout>
+
+
     </LinearLayout>
 </ScrollView>
