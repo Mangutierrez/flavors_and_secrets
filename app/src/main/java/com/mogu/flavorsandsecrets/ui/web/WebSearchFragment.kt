@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.mogu.flavorsandsecrets.MainActivity
 import com.mogu.flavorsandsecrets.databinding.FragmentWebSearchBinding
 
 class WebSearchFragment : Fragment() {
@@ -19,6 +20,8 @@ class WebSearchFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentWebSearchBinding.inflate(inflater, container, false)
+        (activity as? MainActivity)?.appBarMain?.tvAppBarTitle?.text = "Web"
+        (activity as? MainActivity)?.appBarMain?.tvAppBarSubtitle?.text = ""
         return binding.root
     }
 
@@ -31,10 +34,16 @@ class WebSearchFragment : Fragment() {
     }
 
     private fun performSearch(query: String) {
-        if (query.isNotEmpty()) {
-            val intent =
-                Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/search?q=$query"))
+        if (query.isEmpty()) return
+        if (query.startsWith("http://") || query.startsWith("https://")) {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(query))
             startActivity(intent)
+        } else {
+            if (query.isNotEmpty()) {
+                val intent =
+                    Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com/search?q=$query"))
+                startActivity(intent)
+            }
         }
     }
 

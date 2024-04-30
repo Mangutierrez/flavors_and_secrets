@@ -1,5 +1,7 @@
 package com.mogu.flavorsandsecrets.ui.video
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,8 +10,11 @@ import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.mogu.flavorsandsecrets.MainActivity
 import com.mogu.flavorsandsecrets.R
-import com.mogu.flavorsandsecrets.databinding.FragmentPhotoBinding
+import com.mogu.flavorsandsecrets.VideoPlayerActivity
+import com.mogu.flavorsandsecrets.data.DataDummy
 import com.mogu.flavorsandsecrets.databinding.FragmentVideoBinding
 
 class VideosFragment : Fragment() {
@@ -23,6 +28,8 @@ class VideosFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentVideoBinding.inflate(inflater, container, false)
+        (activity as? MainActivity)?.appBarMain?.tvAppBarTitle?.text = "Videos"
+        (activity as? MainActivity)?.appBarMain?.tvAppBarSubtitle?.text = ""
         return binding.root
     }
 
@@ -40,10 +47,7 @@ class VideosFragment : Fragment() {
     }
 
     private fun getVideos(): List<String> {
-        // Listado de las fotos
-        return listOf(
-            "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""
-        )
+        return DataDummy.getVideoList()
     }
 
     override fun onDestroyView() {
@@ -67,8 +71,15 @@ class VideosAdapter : RecyclerView.Adapter<VideosAdapter.PhotoViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: PhotoViewHolder, position: Int) {
-        val photoUrl = videoUrls[position]
-        // Cargar imagen
+        val videoUrl = videoUrls[position]
+        Glide.with(holder.itemView.context)
+            .load(videoUrl)
+            .centerCrop()
+            .into(holder.imgVideo)
+
+        holder.itemView.setOnClickListener {
+            openVideoPlayer(holder.itemView.context, videoUrl)
+        }
 
     }
 
@@ -77,4 +88,11 @@ class VideosAdapter : RecyclerView.Adapter<VideosAdapter.PhotoViewHolder>() {
     class PhotoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imgVideo: ImageView = itemView.findViewById(R.id.imgVideo)
     }
+
+    private fun openVideoPlayer(context: Context, videoUrl: String) {
+        val intent = Intent(context, VideoPlayerActivity::class.java)
+        intent.putExtra("VIDEO_URL", videoUrl)
+        context.startActivity(intent)
+    }
+
 }

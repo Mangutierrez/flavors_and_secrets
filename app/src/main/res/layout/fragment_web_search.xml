@@ -1,6 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="16dp">
 
@@ -19,13 +20,12 @@
         android:layout_height="0dp"
         android:layout_weight="1" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnSearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="@color/design_default_color_primary"
-        android:onClick="onSearchClicked"
+        android:layout_marginEnd="8dp"
         android:text="Buscar"
-        android:textColor="@android:color/white" />
+        app:cornerRadius="8dp" />
+
 </LinearLayout>

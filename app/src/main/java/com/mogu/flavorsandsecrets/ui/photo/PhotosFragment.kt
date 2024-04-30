@@ -1,5 +1,6 @@
 package com.mogu.flavorsandsecrets.ui.photo
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,8 +10,12 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.mogu.flavorsandsecrets.MainActivity
 import com.mogu.flavorsandsecrets.R
+import com.mogu.flavorsandsecrets.data.DataDummy
 import com.mogu.flavorsandsecrets.databinding.FragmentPhotoBinding
+import com.mogu.flavorsandsecrets.ui.detail.RecipeDetailActivity
+import com.mogu.flavorsandsecrets.ui.home.Recipe
 
 class PhotosFragment : Fragment() {
 
@@ -23,6 +28,8 @@ class PhotosFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentPhotoBinding.inflate(inflater, container, false)
+        (activity as? MainActivity)?.appBarMain?.tvAppBarTitle?.text = "Fotos"
+        (activity as? MainActivity)?.appBarMain?.tvAppBarSubtitle?.text = ""
         return binding.root
     }
 
@@ -39,11 +46,8 @@ class PhotosFragment : Fragment() {
         photosAdapter.submitList(getPhotos())
     }
 
-    private fun getPhotos(): List<String> {
-        // Listado de las fotos
-        return listOf(
-            "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""
-        )
+    private fun getPhotos(): List<Recipe> {
+         return DataDummy.getAllRecipes()
     }
 
     override fun onDestroyView() {
@@ -54,10 +58,10 @@ class PhotosFragment : Fragment() {
 
 class PhotosAdapter : RecyclerView.Adapter<PhotosAdapter.PhotoViewHolder>() {
 
-    private var photoUrls = emptyList<String>()
+    private var photoRecipeList = emptyList<Recipe>()
 
-    fun submitList(urls: List<String>) {
-        photoUrls = urls
+    fun submitList(urls: List<Recipe>) {
+        photoRecipeList = urls
         notifyDataSetChanged()
     }
 
@@ -67,15 +71,22 @@ class PhotosAdapter : RecyclerView.Adapter<PhotosAdapter.PhotoViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: PhotoViewHolder, position: Int) {
-        val photoUrl = photoUrls[position]
+        val recipe = photoRecipeList[position]
         // Cargar imagen
         Glide.with(holder.itemView.context)
-            .load(photoUrl)
+            .load(recipe.imageUrl)
             .centerCrop()
             .into(holder.imgPhoto)
+        holder.itemView.rootView.setOnClickListener {
+            val context = holder.itemView.context
+            val intent = Intent(context, RecipeDetailActivity::class.java).apply {
+                putExtra("RECIPE", recipe)
+            }
+            context.startActivity(intent)
+        }
     }
 
-    override fun getItemCount() = photoUrls.size
+    override fun getItemCount() = photoRecipeList.size
 
     class PhotoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imgPhoto: ImageView = itemView.findViewById(R.id.imgPhoto)

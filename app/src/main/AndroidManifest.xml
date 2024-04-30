@@ -36,6 +36,10 @@
         <activity
             android:name=".ui.web.WebSearchActivity"
             android:theme="@style/Theme.FlavorsAndSecrets.NoActionBar"/>
+
+        <activity
+            android:name=".VideoPlayerActivity"
+            android:theme="@style/Theme.FlavorsAndSecrets.NoActionBar"/>
     </application>
 
 </manifest>

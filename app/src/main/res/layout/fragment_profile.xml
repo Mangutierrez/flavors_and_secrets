@@ -11,14 +11,16 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="32dp"
         android:layout_marginBottom="16dp"
-        android:src="@android:drawable/ic_menu_camera" />
+        android:src="@drawable/profile_image" />
 
     <TextView
         android:id="@+id/txtUserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="Usuario 123"
+        android:text="Lore Minsun"
+        android:fontFamily="@font/sedan_regular"
+        android:textStyle="bold"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
     <TextView
@@ -27,7 +29,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="24dp"
-        android:text="usuario123@sadads.com"
+        android:fontFamily="@font/sedan_regular"
+        android:text="loreminsun@food.com"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <TextView
@@ -37,7 +40,19 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="16dp"
         android:text="Favoritos"
+        android:fontFamily="@font/sedan_regular"
+        android:textStyle="bold"
         android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
+
+    <TextView
+        android:id="@+id/tvNoFavorites"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:fontFamily="@font/sedan_regular"
+        android:text="Sin favoritos" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvFavorites"
